@@ -9,27 +9,29 @@ import { sampleText } from "./sampleText"
 import { $getRoot, ParagraphNode } from "lexical"
 
 import {
-  LexicalRichTextPlugin,
   LexicalComposer,
+  LexicalListPlugin,
+  LexicalLinkPlugin,
+  LexicalTablePlugin,
+  LexicalHistoryPlugin,
+  LexicalRichTextPlugin,
   LexicalOnChangePlugin,
   LexicalContentEditable,
-  LexicalHistoryPlugin,
   LexicalAutoFocusPlugin,
-  LexicalLinkPlugin,
-  LexicalListPlugin,
-  LexicalCheckListPlugin,
-  LexicalTablePlugin
+  LexicalCheckListPlugin
 } from "lexical-vue"
 
 import { HashtagNode } from "@lexical/hashtag"
 import { ListItemNode, ListNode } from "@lexical/list"
 import { AutoLinkNode, LinkNode } from "@lexical/link"
-import { HeadingNode, QuoteNode, $isHeadingNode } from "@lexical/rich-text"
+import { HeadingNode, QuoteNode } from "@lexical/rich-text"
 import { CodeHighlightNode, CodeNode } from "@lexical/code"
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table"
 
-import MarkdownShortcutPlugin from "./MarkdownShortcutPlugin.vue"
 import AutoLinkPlugin from "./AutoLinkPlugin.vue"
+import MarkdownShortcutPlugin from "./MarkdownShortcutPlugin.vue"
+
+import { CustomQuoteNode } from "../nodes"
 
 const editorStore = useEditorStore()
 
@@ -53,7 +55,6 @@ const config = {
   editorState: sampleText,
   nodes: [
     HeadingNode,
-    QuoteNode,
     ParagraphNode,
     ListNode,
     ListItemNode,
@@ -64,7 +65,12 @@ const config = {
     TableRowNode,
     AutoLinkNode,
     LinkNode,
-    HashtagNode
+    HashtagNode,
+    CustomQuoteNode,
+    {
+      replace: QuoteNode,
+      with: (node) => new CustomQuoteNode()
+    }
   ],
   onError
 }

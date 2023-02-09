@@ -18,6 +18,10 @@
   color: #333;
 }
 
+.editor-input > *:last-child {
+  margin-bottom: 0 !important;
+}
+
 .editor-placeholder {
   color: #999;
   position: absolute;
@@ -55,6 +59,32 @@
 
 .editor-heading-h3 {
   font-size: 1.25em;
+}
+.editor-heading-h4 {
+  font-size: 1em;
+}
+.editor-heading-h5 {
+  font-size: 0.875em;
+}
+.editor-heading-h6 {
+  font-size: 0.85em;
+  color: #57606a;
+}
+
+.editor-paragraph {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.editor-quote {
+  margin: 0;
+  margin-left: 20px;
+  font-size: 15px;
+  color: rgb(101, 103, 107);
+  border-left-color: rgb(206, 208, 212);
+  border-left-width: 4px;
+  border-left-style: solid;
+  padding-left: 16px;
 }
 
 .other h2 {
@@ -211,16 +241,6 @@
 
 .editor-tokenFunction {
   color: #dd4a68;
-}
-
-.editor-paragraph {
-  margin: 0;
-  margin-bottom: 8px;
-  position: relative;
-}
-
-.editor-paragraph:last-child {
-  margin-bottom: 0;
 }
 
 .editor-quote {
